@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>モリゾーとキッコロの大冒険</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="game-shell">
+        <header class="hud">
+            <div>
+                <p class="eyebrow">Cute adventure</p>
+                <h1>モリゾーとキッコロの大冒険</h1>
+            </div>
+            <div class="scoreboard">
+                <div class="stat">
+                    <span class="label">モリゾー</span>
+                    <strong id="morizoScore">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="label">キッコロ</span>
+                    <strong id="kiccoroScore">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="label">時間</span>
+                    <strong id="time">30</strong>
+                </div>
+            </div>
+        </header>
+
+        <canvas id="gameCanvas" width="900" height="540"></canvas>
+
+        <div id="startOverlay" class="start-overlay">
+            <button id="startBtn" type="button">ゲーム開始</button>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="controls">
+                <span><strong>モリゾー</strong>: ↑ ↓ ← →</span>
+                <span><strong>キッコロ</strong>: W A S D</span>
+                <span>目標: たけのこを集める</span>
+            </div>
+        </div>
+
+        <div class="touch-controls" aria-label="ゲーム操作">
+            <div class="touch-panel touch-panel-left">
+                <div class="touch-pad" data-player="morizo" data-dir="up">▲</div>
+                <div class="touch-row">
+                    <div class="touch-pad" data-player="morizo" data-dir="left">◀</div>
+                    <div class="touch-pad" data-player="morizo" data-dir="down">▼</div>
+                    <div class="touch-pad" data-player="morizo" data-dir="right">▶</div>
+                </div>
+            </div>
+
+            <div class="touch-panel touch-panel-right">
+                <div class="touch-pad" data-player="kiccoro" data-dir="up">▲</div>
+                <div class="touch-row">
+                    <div class="touch-pad" data-player="kiccoro" data-dir="left">◀</div>
+                    <div class="touch-pad" data-player="kiccoro" data-dir="down">▼</div>
+                    <div class="touch-pad" data-player="kiccoro" data-dir="right">▶</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+:root {
+    --bg1: #103b29;
+    --bg2: #295f46;
+    --panel: rgba(10, 30, 19, 0.7);
+    --panel-border: rgba(255, 255, 255, 0.14);
+    --accent: #d5f27a;
+    --pink: #ff8db1;
+    --cyan: #7fe8c7;
+    --green: #82d77c;
+    --text: #f3fff6;
+    --shadow: rgba(7, 28, 19, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: "Segoe UI", "Yu Gothic", sans-serif;
+    background: radial-gradient(circle at top, #5aa763 0%, #2c6f4e 35%, #163a2b 100%);
+    color: var(--text);
+}
+
+.game-shell {
+    width: min(94vw, 980px);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px var(--shadow);
+    padding: 18px 18px 16px;
+    backdrop-filter: blur(6px);
+}
+
+.hud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.eyebrow {
+    margin: 0 0 4px;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+}
+
+.scoreboard {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    min-width: 110px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.78;
+    margin-bottom: 5px;
+}
+
+#morizoScore,
+#kiccoroScore,
+#time {
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(140, 214, 146, 0.28), rgba(17, 48, 34, 0.42));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    position: relative;
+}
+
+.start-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.start-overlay.hidden {
+    display: none;
+}
+
+.bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+}
+
+.controls {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    opacity: 0.94;
+}
+
+.touch-controls {
+    display: none;
+    margin-top: 14px;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.touch-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 8px;
+    border-radius: 18px;
+}
+
+.touch-panel-left {
+    background: rgba(112, 216, 160, 0.14);
+    border: 1px solid rgba(112, 216, 160, 0.35);
+}
+
+.touch-panel-right {
+    background: rgba(255, 168, 198, 0.14);
+    border: 1px solid rgba(255, 168, 198, 0.35);
+}
+
+.touch-row {
+    display: flex;
+    gap: 8px;
+}
+
+.touch-pad {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 1.4rem;
+    font-weight: 700;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.touch-panel-left .touch-pad {
+    background: rgba(135, 225, 171, 0.24);
+    border-color: rgba(135, 225, 171, 0.6);
+    color: #ebfff5;
+}
+
+.touch-panel-right .touch-pad {
+    background: rgba(255, 176, 204, 0.24);
+    border-color: rgba(255, 176, 204, 0.6);
+    color: #fff3fa;
+}
+
+button {
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #dff7a3, #8edb6d);
+    color: #123425;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(118, 204, 111, 0.26);
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(118, 204, 111, 0.35);
+}
+
+@media (max-width: 720px) {
+
+    .hud,
+    .bottom-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scoreboard {
+        width: 100%;
+    }
+
+    .stat {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .controls {
+        font-size: 0.82rem;
+    }
+
+    .touch-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .touch-panel {
+        width: 100%;
+        padding: 8px 4px;
+        gap: 6px;
+    }
+
+    .touch-pad {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    .touch-row {
+        gap: 6px;
+    }
+
+    .game-shell {
+        padding: 12px 12px 14px;
+    }
+
+    h1 {
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+
+    .label {
+        font-size: 0.65rem;
+    }
+
+    #morizoScore,
+    #kiccoroScore,
+    #time {
+        font-size: 1.2rem;
+    }
+}
