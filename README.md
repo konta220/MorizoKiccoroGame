@@ -1,0 +1,2 @@
+# MorizoKiccoroGame
+モリゾーとキッコロのゲーム
